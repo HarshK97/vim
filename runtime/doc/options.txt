@@ -3249,21 +3249,14 @@ A jump table for the options with a short description can be found at |Q_op|.
 		vertical	Start diff mode with vertical splits (unless
 				explicitly specified otherwise).
 
-		wordgap:{n}	When using inline:word, merge adjacent diff blocks if
-				separated by at most {n} word characters.  This reduces
-				visual fragmentation when changes are close together.
-
-				No Merging: 0
-				Default: 2
-				Maximum: 5
-				Only works with inline:word.
-
-				Example:  >
-					: set diffopt+=inline:word,wordgap:2
-<				This merges "foo-bar" vs "foo-baz" into one continuous
-				highlight instead of separate fragments.
-
-
+	        wordgap:{n}     When highlighting inline differences with
+	                        'diffopt' set to "inline:word", consider words
+	                        to be different only if they are separated
+	                        by at least {n} changed characters.  This
+	                        helps avoid highlighting small changes
+	                        within words that are mostly the same.
+	                        The default setting is "wordgap:2".
+	                        The max setting is "wordgap:5".
 
 	Examples: >
 		:set diffopt=internal,filler,context:4
